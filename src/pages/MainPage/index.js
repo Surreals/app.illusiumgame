@@ -81,7 +81,6 @@ export const MainPage = () => {
     const offset = Number(Math.floor(new Date().getTimezoneOffset() / 60) * -1);
     const hours = Number(time.gameStartHour) + offset;
     const gameStartHour = hours >= 24 ? hours - 24 : hours;
-    console.log(offset, gameStartHour);
     const cnt = new Date().setHours(gameStartHour, time.gameStartMinutes, 0, 0);
     setHours(time.gameStartHour);
     setMinutes(time.gameStartMinutes);
