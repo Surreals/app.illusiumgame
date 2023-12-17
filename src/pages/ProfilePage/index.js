@@ -41,6 +41,8 @@ export const ProfilePage = () => {
 
   const offset = Math.floor(new Date().getTimezoneOffset() / 60) * -1;
 
+  console.log(user)
+
   const profile = (
     <Space>
       <Form
@@ -48,6 +50,10 @@ export const ProfilePage = () => {
         layout="vertical"
         style={{
           maxWidth: 800,
+        }}
+        initialValues={{
+          card: user.card,
+          crypto: user.crypto
         }}
         onFinish={(values) => {
           putData("/user", { ...values, _id: user._id }).then((data) => {
