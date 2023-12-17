@@ -124,6 +124,16 @@ export const MainPage = () => {
   }, [players, user, phase]);
 
   useEffect(() => {
+    function onReset() {
+      window.location.reload()
+    }
+    socket.on("RESET", onReset);
+    return () => {
+      socket.off("RESET", onReset);
+    };
+  }, []);
+
+  useEffect(() => {
     function onPhaseChange(value) {
       console.log("GAME_SOCKET", value);
       const playerIndex = players.findIndex(({ userId }) => get(user, "_id") === userId);
